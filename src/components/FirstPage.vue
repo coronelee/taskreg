@@ -1,6 +1,7 @@
 <script setup>
 defineProps({
-  editData: Function
+  editData: Function,
+  deleteWord: Function
 })
 </script>
 
@@ -9,11 +10,11 @@ defineProps({
     class="grid grid-cols-2 w-full h-full gap-1 [&>input]:p-1 [&>input]:outline-none [&>input]:rounded [&>select]:p-1 max-[830px]:grid-cols-1 max-[830px]:[&>span]:text-center"
   >
     <span>Фамилия*</span>
-    <input type="text" @input="editData($event, 'surname')" /> <span>Имя*</span
-    ><input type="text" @input="editData($event, 'name')" /> <span>Отчество</span
+    <input type="text" @input="editData($event, 'surname')" />
+    <span>Имя*</span><input type="text" @input="editData($event, 'name')" /> <span>Отчество</span
     ><input type="text" @input="editData($event, 'patronymic')" /> <span>Дата рождения*</span
-    ><input type="text" @input="editData($event, 'date')" /> <span>Номер телефона*</span
-    ><input type="text" @input="editData($event, 'phone')" />
+    ><input type="date" @input="editData($event, 'date')" /> <span>Номер телефона*</span
+    ><input type="text" @input="editData($event, 'phone')" maxlength="11" />
     <span>Пол</span>
     <select name="" id="" @click="editData($event, 'gender')" required>
       <option value="man">Мужской</option>

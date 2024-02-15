@@ -31,6 +31,17 @@ const data = ref({
 
 const editData = (event, input) => {
   data.value[input] = event.target.value
+  if (input == 'phone' || input == 'index' || input == 'series' || input == 'number') {
+    event.target.value = event.target.value
+      .replace(/[а-я]/gi, '')
+      .replace(/[А-Я]/gi, '')
+      .replace(/\D/g, '')
+  }
+  if (input == 'phone') {
+    let phone = event.target.value.split('')
+    phone[0] = 7
+    event.target.value = phone.join('')
+  }
 }
 
 const nextPage = () => {
@@ -75,7 +86,12 @@ const nextPage = () => {
         Заполните все поля со звездочкой!
       </div>
       <div class="w-full">
-        <component v-if="pages == 1" :is="FirstPage" :editData="editData" />
+        <component
+          v-if="pages == 1"
+          :is="FirstPage"
+          :editData="editData"
+          :deleteWord="deleteWord"
+        />
         <component v-if="pages == 2" :is="SecondPage" :editData="editData" />
         <component v-if="pages == 3" :is="ThirdPage" :editData="editData" />
         <component v-if="pages == 4" :is="ResultRegistration" :editData="editData" :data="data" />

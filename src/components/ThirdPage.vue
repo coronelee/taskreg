@@ -18,6 +18,6 @@ defineProps({
     <span>Серия</span><input type="text" @input="editData($event, 'series')" /> <span>Номер</span
     ><input type="text" @input="editData($event, 'number')" /> <span>Кем выдан</span
     ><input type="text" @input="editData($event, 'whoIssued')" /> <span>Дата выдачи*</span
-    ><input type="text" @input="editData($event, 'dateIssue')" />
+    ><input type="date" @input="editData($event, 'dateIssue')" />
   </div>
 </template>
