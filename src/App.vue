@@ -40,6 +40,7 @@ const nextPage = () => {
       pages.value++
     } else {
       error.value = true
+      setTimeout(() => (error.value = false), 4500)
     }
   } else if (pages.value == 2) {
     if (data.value.city) {
@@ -47,6 +48,7 @@ const nextPage = () => {
       pages.value++
     } else {
       error.value = true
+      setTimeout(() => (error.value = false), 4500)
     }
   } else if (pages.value == 3) {
     if (data.value.typeDoc && data.value.dateIssue) {
@@ -54,6 +56,8 @@ const nextPage = () => {
       pages.value++
     } else {
       error.value = true
+
+      setTimeout(() => (error.value = false), 4500)
     }
   }
 }
@@ -61,14 +65,16 @@ const nextPage = () => {
 
 <template>
   <div class="bg-slate-500 w-screen h-screen flex justify-center items-center">
-    <div class="w-1/2 bg-slate-300 rounded-xl flex flex-col items-center p-10 relative">
+    <div
+      class="w-1/2 bg-slate-300 rounded-xl flex flex-col items-center p-10 relative max-[480px]:w-3/4 max-[480px]:p-5"
+    >
       <div
-        class="absolute text-white text-2xl w-3/4 h-10 text-center top-0 bg-red-500 animate-bounce rounded-xl"
+        class="absolute text-white text-2xl w-3/4 p-2 text-center top-0 bg-red-500 animate-bounce rounded-xl"
         v-if="error"
       >
         Заполните все поля со звездочкой!
       </div>
-      <div class="w-full p-5">
+      <div class="w-full">
         <component v-if="pages == 1" :is="FirstPage" :editData="editData" />
         <component v-if="pages == 2" :is="SecondPage" :editData="editData" />
         <component v-if="pages == 3" :is="ThirdPage" :editData="editData" />
@@ -77,7 +83,7 @@ const nextPage = () => {
 
       <div v-if="pages < 4" class="w-full flex justify-center">
         <button
-          class="bg-blue-500 rounded-xl w-1/4 p-2 text-white hover:bg-blue-700 transition-all duration-300"
+          class="bg-blue-500 rounded-xl mt-2 p-2 text-white hover:bg-blue-700 transition-all duration-300 max-[830px]:w-full"
           @click="nextPage"
         >
           Следующая форма

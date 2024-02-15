@@ -6,7 +6,7 @@ defineProps({
 
 <template>
   <div
-    class="grid grid-cols-2 w-full h-full gap-1 [&>input]:p-1 [&>input]:outline-none [&>input]:rounded [&>select]:p-1"
+    class="grid grid-cols-2 w-full h-full gap-1 [&>input]:p-1 [&>input]:outline-none [&>input]:rounded [&>select]:p-1 max-[830px]:grid-cols-1 max-[830px]:[&>span]:text-center"
   >
     <span>Фамилия*</span>
     <input type="text" @input="editData($event, 'surname')" /> <span>Имя*</span
